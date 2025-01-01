@@ -1,6 +1,11 @@
 const productModel = require("../models/productSchema");
+//create product
+//update product (byid)
+// get all products
+//get product by category id
+//delete product by id
 
-const register = (res, req) => {
+const createProduct = (res, req) => {
   const {
     Category,
     ProductDescription,
@@ -34,4 +39,7 @@ const register = (res, req) => {
         }
       });
   });
+};
+module.exports = {
+  createProduct,
 };

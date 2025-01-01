@@ -1,7 +1,7 @@
 const userModel = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const register = (req, res) => {
+const registerUser = (req, res) => {
   const { Name, email, Password, PhoneNumber, Country, role, fav } = req.body;
 
   const newUser = new userModel({
@@ -31,6 +31,8 @@ const register = (req, res) => {
       });
   });
 };
+const login = (res, req) => {};
+//login function
 module.exports = {
-  register,
+  registerUser,
 };
