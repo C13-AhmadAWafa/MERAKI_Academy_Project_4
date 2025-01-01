@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   phoneNumber: { type: Number },
   country: { type: String },
-  role: { type: mongoose.SchemaType.ObjectId, ref: "Role" },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
+  fav: [{ product: { type: mongoose.Schema.Types.ObjectId, ref: "product" } }],
 });
 
 module.exports = mongoose.model("User", userSchema);
