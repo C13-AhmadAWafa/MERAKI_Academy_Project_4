@@ -31,8 +31,56 @@ const registerUser = (req, res) => {
       });
   });
 };
-const login = (res, req) => {};
+const login = (res, req) => {
+  const { email, Password } = req.body;
+  userModel
+    .findOne({ email })
+    .then(async (result) => {
+      if (!result) {
+        res.status(403).json({
+          success: false,
+          message: "email or password is not valid",
+        });
+      } else {
+        const isValid = await bcrypt.compare(Password, result.Password);
+        if (!isValid) {
+          res.status(403).json({
+            success: false,
+            message: "email or password is not valid",
+          });
+        } else {
+          const options = { expiresIn: "10h" };
+          const payload = {
+            Name: result.Name,
+            email: result.email,
+            Password: result.Password,
+            PhoneNumber: result.PhoneNumber,
+            Country: result.Country,
+            role: {
+              role: result.role.role,
+              Permissions: result.Permissions.role,
+            },
+            fav: result.fav,
+          };
+          const token = jwt.sign(payload, process.env.SECRET, options);
+          res.status(200).json({
+            success: true,
+            message: `login successful`,
+            token: token,
+          });
+        }
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `server error`,
+        error: err.message,
+      });
+    });
+};
 //login function
 module.exports = {
   registerUser,
+  login,
 };
