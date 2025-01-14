@@ -5,21 +5,29 @@ const productModel = require("../models/productSchema");
 //get product by category id
 //delete product by id
 
-const createProduct = (res, req) => {
+const createProduct = (req, res) => {
   const {
-    Category,
-    ProductDescription,
-    ProductName,
-    ProductSize,
-    ProductColor,
+    category,
+    productDescription,
+    productName,
+    productSize,
+    productColor,
     img,
   } = req.body;
+  console.log(
+    category,
+    productDescription,
+    productName,
+    productSize,
+    productColor,
+    img
+  );
   const newProduct = new productModel({
-    Category,
-    ProductDescription,
-    ProductName,
-    ProductSize,
-    ProductColor,
+    category,
+    productDescription,
+    productName,
+    productSize,
+    productColor,
     img,
   });
   newProduct.save().then((result) => {

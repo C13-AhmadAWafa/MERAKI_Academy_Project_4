@@ -15,13 +15,33 @@ const createCart = (res, req) => {
       res.status(201).json({
         successes: true,
         message: "cart created",
-        result: true,
+        result: result,
       });
     })
     .catch((err) => {
-      res.status(409).json({
+      res.status(404).json({
         successes: false,
         message: "items add to cart",
+        error: err.message,
+      });
+    });
+};
+const readById = (req, res) => {
+  const { id } = req.params;
+  productModel
+    .findOne({ _id: id })
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `${id}`,
+        result: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server error`,
+        error: err.message,
       });
     });
 };
@@ -47,7 +67,7 @@ const updateCart = (req, res) => {
     });
 };
 
-const DeletecartItem = (req, res) => {
+const DeleteCartItem = (req, res) => {
   const { id } = req.params;
   cartModel
     .findOneAndDelete({ _id: id })
@@ -75,5 +95,6 @@ const DeletecartItem = (req, res) => {
 module.exports = {
   createCart,
   updateCart,
-  DeletecartItem,
+  DeleteCartItem,
+  readById,
 };

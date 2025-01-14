@@ -1,8 +1,10 @@
 const userModel = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { createCart } = require("./cart");
 const registerUser = (req, res) => {
   const { Name, email, Password, PhoneNumber, Country, role, fav } = req.body;
+  console.log("ff");
 
   const newUser = new userModel({
     Name,
@@ -43,7 +45,7 @@ const registerUser = (req, res) => {
           res.status(201).json({
             successes: true,
             message: "cart created",
-            result: true,
+            result: result,
           });
         })
         .catch((err) => {
@@ -107,4 +109,5 @@ const login = (res, req) => {
 module.exports = {
   registerUser,
   login,
+  createCart,
 };
