@@ -1,12 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import React from 'react'
 import './App.css'
+import Component1 from './components/role 1 interface/Component1'
 
-function App() {
+const App=()=> {
 
 
-  
+  return(
+    <>
+    <Component1/>
+    </>
+  )
 }
 
 export default App
