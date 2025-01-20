@@ -20,7 +20,7 @@ app.use("/category", categoryRouter);
 app.use("/role", roleRouter);
 
 // Handles any other endpoints [unassigned - endpoints]
-app.use("*", (req, res) => res.status(404).json("ttNO content at this path"));
+app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
