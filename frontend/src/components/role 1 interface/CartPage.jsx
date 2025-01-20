@@ -1,17 +1,10 @@
 import React from "react";
 import  { useEffect, useState } from "react";
-
-
-
-
-
-
-
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    fetchCart()
+    Cart()
       .then((response) => setCartItems(response.data))
       .catch((error) => console.error("Error fetching cart:", error));
   }, []);

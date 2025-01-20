@@ -1,7 +1,8 @@
-import React from "react";
 
+import React from "react";
+import  { useEffect, useState } from "react";
 const CategoryPage = () => {
-  return <div> Categories </div>;
+   const [cartItems, setCartItems] = useState([]);
 };
 
 export default CategoryPage;
