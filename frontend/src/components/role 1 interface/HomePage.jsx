@@ -1,12 +1,13 @@
 import React from "react";
 import  { useEffect, useState } from "react";
+import { Products } from "../role 2 interface/src";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
     useEffect(() => {
     
-    fetchProducts()
+    Products()
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
@@ -34,5 +35,5 @@ const HomePage = () => {
 
 
 
-import { fetchProducts } from "../role 2 interface/src";
+
 export default HomePage;

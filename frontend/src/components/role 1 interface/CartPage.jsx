@@ -1,5 +1,6 @@
 import React from "react";
 import  { useEffect, useState } from "react";
+import { Cart } from "../role 2 interface/src";
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
 
@@ -24,5 +25,5 @@ const CartPage = () => {
     </div>
   );
 };
-import { fetchCart } from "../role 2 interface/src";
+
 export default CartPage;
